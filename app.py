@@ -9,14 +9,18 @@ from datetime import datetime
 # Google Sheets setup
 # ----------------------------
 SHEET_NAME = "3 Man League test"
-SERVICE_ACCOUNT_FILE = "effective-fire-480702-m7-bfed8322b65c.json"
+##SERVICE_ACCOUNT_FILE = "effective-fire-480702-m7-bfed8322b65c.json"
+credentials_info = st.secrets["gcp_service_account"]
+
 
 scope = ["https://spreadsheets.google.com/feeds",
          "https://www.googleapis.com/auth/drive"]
 
-credentials = ServiceAccountCredentials.from_json_keyfile_name(SERVICE_ACCOUNT_FILE, scope)
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(credentials_info, scope)
+#
+##credentials = ServiceAccountCredentials.from_json_keyfile_name(SERVICE_ACCOUNT_FILE, scope)
 client = gspread.authorize(credentials)
-
+#sdxsxs
 sheet = client.open(SHEET_NAME)
 
 # ----------------------------
